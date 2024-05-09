@@ -1,0 +1,11 @@
+.viewDinamic {
+  display: flex;
+  padding: 20px;
+
+  .building {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

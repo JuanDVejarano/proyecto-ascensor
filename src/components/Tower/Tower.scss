@@ -1,0 +1,13 @@
+.tower {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+    .floor {
+        height: 100px;
+        background-color: #383737;
+        border: 1px solid #000;
+
+        &__view {}
+    }
+}
