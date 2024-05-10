@@ -104,6 +104,40 @@ function App() {
                     console.log("otropiso");
                     break;
             }
+        } else {
+            switch (currentFloor) {
+                case 2:
+                    if (externalButons[10]) {
+                        botonesExternosAux[10] = false;
+                    }
+                    break;
+
+                case 3:
+                    if (externalButons[8]) {
+                        botonesExternosAux[8] = false;
+                    }
+                    break;
+                case 4:
+                    if (externalButons[6]) {
+                        botonesExternosAux[6] = false;
+                    }
+                    break;
+
+                case 5:
+                    if (externalButons[4]) {
+                        botonesExternosAux[4] = false;
+                    }
+                    break;
+
+                case 6:
+                    if (externalButons[2]) {
+                        botonesExternosAux[2] = false;
+                    }
+                    break;
+                default:
+                    console.log("otropiso");
+                    break;
+            }
         }
 
         setExternalButons([...botonesExternosAux]);
