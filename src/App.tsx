@@ -35,6 +35,8 @@ function App() {
 
     let [currentFloor, setCurrentFloor] = useState<number>(1); //piso del elevador
 
+    let [openDoor, setOpenDoor] = useState<boolean>(false); //puerta del elevador abierta o cerrada
+
     //Funcion que verifica si hay botones internos o externos presionados
     const moveMost = () => {
         let hasTrueInternalButtons = internalButons.some((value) => value);
@@ -46,7 +48,6 @@ function App() {
 
     //useEffect que se ejecuta cada vez que se presiona un boton
     useEffect(() => {
-        //debugger;
         matchfloorButons();
         if (moveMost()) {
             route();
@@ -54,6 +55,7 @@ function App() {
     }, [currentFloor]);
 
     const onClickRoute = () => {
+        matchfloorButons();
         if (validationByFloor()) {
             route();
         }
@@ -110,47 +112,49 @@ function App() {
     // Funcion de validacion por piso
     const validationByFloor = () => {
         let flag: boolean = true;
-        if (isGoingUp) {
-            switch (currentFloor) {
-                case 1:
-                    if (externalButons[11]) {
-                        flag = false;
-                    }
-                    break;
+        if (moveMost()) {
+            if (isGoingUp) {
+                switch (currentFloor) {
+                    case 1:
+                        if (externalButons[11]) {
+                            flag = false;
+                        }
+                        break;
 
-                case 2:
-                    if (externalButons[9]) {
-                        flag = false;
-                    }
-                    break;
+                    case 2:
+                        if (externalButons[9]) {
+                            flag = false;
+                        }
+                        break;
 
-                case 3:
-                    if (externalButons[7]) {
-                        flag = false;
-                    }
-                    break;
-                case 4:
-                    if (externalButons[5]) {
-                        flag = false;
-                    }
-                    break;
+                    case 3:
+                        if (externalButons[7]) {
+                            flag = false;
+                        }
+                        break;
+                    case 4:
+                        if (externalButons[5]) {
+                            flag = false;
+                        }
+                        break;
 
-                case 5:
-                    if (externalButons[3]) {
-                        flag = false;
-                    }
-                    break;
+                    case 5:
+                        if (externalButons[3]) {
+                            flag = false;
+                        }
+                        break;
 
-                case 6:
-                    if (externalButons[1]) {
-                        flag = false;
-                    }
-                    break;
-                default:
-                    console.log("otropiso");
-                    break;
+                    case 6:
+                        if (externalButons[1]) {
+                            flag = false;
+                        }
+                        break;
+                    default:
+                        console.log("otropiso");
+                        break;
+                }
             }
-        }
+        } else flag = false;
 
         return flag;
     };
@@ -181,7 +185,9 @@ function App() {
                 <div className="towerButtons">
                     <div className="building">
                         <Tower></Tower>
-                        <Elevator floor={currentFloor}></Elevator>
+                        <Elevator
+                            stateDoor={openDoor}
+                            floor={currentFloor}></Elevator>
                     </div>
                     <RequestTable
                         onClickButon={onClickRoute}
