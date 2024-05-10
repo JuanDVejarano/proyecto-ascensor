@@ -1,5 +1,4 @@
 .elevator {
-    height: 40px;
     position: absolute;
     width: 70%;
     height: 100px;
@@ -7,25 +6,81 @@
     border-top: 2px solid #fdfddf;
     border-left: 2px solid #fdfddf;
     border-right: 2px solid #fdfddf;
+    transition: all 1s cubic-bezier(0.49, 0.07, 0.49, 0.91);
 
     .doors {
         padding: 2px;
         display: flex;
         height: 100px;
+        transition: all 1s cubic-bezier(0.49, 0.07, 0.49, 0.91);
+        position: relative;
 
         &__left {
             width: 50%;
-            height: 100%;
+            height: 96px;
             background-color: #648d50;
             border-right: 2px solid #313131;
+            transition: all 1s cubic-bezier(0.49, 0.07, 0.49, 0.91);
         }
 
         &__right {
+            position: absolute;
+            right: 0;
             width: 50%;
-            height: 100%;
+            height: 96px;
             background-color: #8d5069;
             border-left: 2px solid #313131;
+            transition: all 1s cubic-bezier(0.49, 0.07, 0.49, 0.91);
         }
 
+        &--open {
+            @extend .doors;
+
+            .doors {
+                &__left {
+                    width: 0px;
+                }
+
+                &__right {
+                    width: 0px;
+                }
+            }
+        }
+
+    }
+
+    &--first {
+        @extend .elevator;
+        bottom: 0px;
+    }
+
+    &--second {
+        @extend .elevator;
+        bottom: 100px;
+    }
+
+    &--third {
+        @extend .elevator;
+        bottom: 200px;
+    }
+
+    &--fourth {
+        @extend .elevator;
+        bottom: 300px;
+    }
+
+    &--fifth {
+        @extend .elevator;
+        bottom: 400px;
+    }
+
+    &--sixth {
+        @extend .elevator;
+        bottom: 500px;
+    }
+
+    &--seventh {
+        @extend .elevator;
+        bottom: 600px;
     }
 }

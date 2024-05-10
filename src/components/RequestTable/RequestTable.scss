@@ -1,1 +1,27 @@
-.RequestTable {}
+.requestTable {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 50px 0px;
+
+    &__item {
+        height: 50px;
+        display: flex;
+        padding: 1px;
+
+        button {
+            display: flex;
+
+            img {
+                height: 60%;
+            }
+        }
+
+        &:nth-child(2n) {
+            button {
+                display: flex;
+                align-items: flex-end;
+            }
+        }
+    }
+}
