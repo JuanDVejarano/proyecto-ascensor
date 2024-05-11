@@ -46,11 +46,27 @@ function App() {
         }
     };
 
+    const functionOpentehDorrs = async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        setOpenDoor(true);
+        console.log(openDoor);
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        setOpenDoor(false);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        onClickRoute();
+    };
+
     //useEffect que se ejecuta cada vez que se presiona un boton
     useEffect(() => {
-        matchfloorButons();
-        if (moveMost()) {
-            route();
+        if (validationByFloor()) {
+            if (moveMost()) {
+                route();
+            }
+        } else {
+            //debugger;
+            matchfloorButons();
+            functionOpentehDorrs();
+            //console.log("No se puede ir a este piso");
         }
     }, [currentFloor]);
 
@@ -65,6 +81,7 @@ function App() {
     const matchfloorButons = () => {
         let botonesExternosAux = externalButons;
         if (isGoingUp) {
+            //debugger;
             switch (currentFloor) {
                 case 1:
                     if (externalButons[11]) {
@@ -187,6 +204,46 @@ function App() {
                         console.log("otropiso");
                         break;
                 }
+            } else {
+                switch (currentFloor) {
+                    case 2:
+                        if (externalButons[10]) {
+                            flag = false;
+                        }
+                        break;
+
+                    case 3:
+                        if (externalButons[8]) {
+                            flag = false;
+                        }
+                        break;
+
+                    case 4:
+                        if (externalButons[6]) {
+                            flag = false;
+                        }
+                        break;
+                    case 5:
+                        if (externalButons[4]) {
+                            flag = false;
+                        }
+                        break;
+
+                    case 6:
+                        if (externalButons[2]) {
+                            flag = false;
+                        }
+                        break;
+
+                    case 7:
+                        if (externalButons[0]) {
+                            flag = false;
+                        }
+                        break;
+                    default:
+                        console.log("otropiso");
+                        break;
+                }
             }
         } else flag = false;
 
@@ -200,6 +257,7 @@ function App() {
             if (currentFloor < 7) {
                 setCurrentFloor(currentFloor + 1);
             } else {
+                isGoingUp = false;
                 setIsGoingUp(false);
                 setCurrentFloor(currentFloor - 1);
             }
@@ -207,6 +265,7 @@ function App() {
             if (currentFloor > 1) {
                 setCurrentFloor(currentFloor - 1);
             } else {
+                isGoingUp = true;
                 setIsGoingUp(true);
                 setCurrentFloor(currentFloor + 1);
             }

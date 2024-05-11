@@ -35,7 +35,7 @@ const Elevator: FC<ElevatorProps> = (props) => {
 
     return (
         <div className={elevatorClass}>
-            <div className="doors">
+            <div className={props.stateDoor ? "doors--open" : "doors"}>
                 <div className="doors__left"></div>
                 <div className="doors__right"></div>
             </div>
