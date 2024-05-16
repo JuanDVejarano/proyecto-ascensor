@@ -24,10 +24,25 @@
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            color: #171f1b;
+
+            button {
+                color: #171f1b;
+                font-size: 20px;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+            }
 
             &--on {
                 @extend .list__button;
+                border: 1px solid #02fc00;
+
+                button {
+                    color: #02fc00;
+                }
             }
         }
     }

@@ -24,7 +24,7 @@ function App() {
     ]); // botones externos del elevador
     let [internalButons, setInternalButons] = useState<boolean[]>([
         false,
-        false,
+        true,
         false,
         false,
         false,

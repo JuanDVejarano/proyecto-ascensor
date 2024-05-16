@@ -13,7 +13,7 @@ const Board = (props) => (
                         className={
                             internalButons ? "list__button--on" : "list__button"
                         }>
-                        {index + 1}
+                        <button>{index + 1}</button>
                     </li>
                 )
             )}
