@@ -24,7 +24,7 @@ function App() {
     ]); // botones externos del elevador
     let [internalButons, setInternalButons] = useState<boolean[]>([
         false,
-        true,
+        false,
         false,
         false,
         false,
@@ -88,10 +88,17 @@ function App() {
     //FFuncion para apagar botones externos
     const offButton = () => {
         let botonesExternosAux = externalButons;
-        if (currentFloor === 1 && externalButons[11]) {
+        let botonesInternosAux = internalButons;
+        console.log(internalButons);
+        if (currentFloor === 1 && (externalButons[11] || internalButons[0])) {
             botonesExternosAux[11] = false;
-        } else if (currentFloor === 7 && externalButons[0]) {
+            botonesInternosAux[0] = false;
+        } else if (
+            currentFloor === 7 &&
+            (externalButons[0] || internalButons[6])
+        ) {
             botonesExternosAux[0] = false;
+            botonesInternosAux[6] = false;
         }
         if (isGoingUp) {
             //debugger;
@@ -99,29 +106,34 @@ function App() {
                 case 2:
                     if (externalButons[9]) {
                         botonesExternosAux[9] = false;
+                        botonesInternosAux[1] = false;
                     }
                     break;
 
                 case 3:
                     if (externalButons[7]) {
                         botonesExternosAux[7] = false;
+                        botonesInternosAux[2] = false;
                     }
                     break;
                 case 4:
                     if (externalButons[5]) {
                         botonesExternosAux[5] = false;
+                        botonesInternosAux[3] = false;
                     }
                     break;
 
                 case 5:
                     if (externalButons[3]) {
                         botonesExternosAux[3] = false;
+                        botonesInternosAux[4] = false;
                     }
                     break;
 
                 case 6:
                     if (externalButons[1]) {
                         botonesExternosAux[1] = false;
+                        botonesInternosAux[5] = false;
                     }
                     break;
                 default:
@@ -132,81 +144,82 @@ function App() {
                 case 2:
                     if (externalButons[10]) {
                         botonesExternosAux[10] = false;
+                        botonesInternosAux[1] = false;
                     }
                     break;
 
                 case 3:
                     if (externalButons[8]) {
                         botonesExternosAux[8] = false;
+                        botonesInternosAux[7] = false;
                     }
                     break;
                 case 4:
                     if (externalButons[6]) {
                         botonesExternosAux[6] = false;
+                        botonesInternosAux[5] = false;
                     }
                     break;
 
                 case 5:
                     if (externalButons[4]) {
                         botonesExternosAux[4] = false;
+                        botonesInternosAux[3] = false;
                     }
                     break;
 
                 case 6:
                     if (externalButons[2]) {
                         botonesExternosAux[2] = false;
+                        botonesInternosAux[1] = false;
                     }
                     break;
                 default:
                     break;
             }
         }
-
         setExternalButons([...botonesExternosAux]);
+        setInternalButons([...botonesInternosAux]);
     };
 
     // Funcion de validacion por piso
     const itIsOnTheFloor = () => {
         let flag: boolean = false;
-        let botonesExternosAux = externalButons;
-        if (currentFloor === 1 && externalButons[11]) {
+        if (currentFloor === 1 && (externalButons[11] || internalButons[0])) {
             flag = true;
-        } else if (currentFloor === 7 && externalButons[0]) {
+        } else if (
+            currentFloor === 7 &&
+            (externalButons[0] || internalButons[6])
+        ) {
             flag = true;
         }
         if (isGoingUp) {
             switch (currentFloor) {
-                case 1:
-                    if (externalButons[11]) {
-                        flag = true;
-                    }
-                    break;
-
                 case 2:
-                    if (externalButons[9]) {
+                    if (externalButons[9] || internalButons[1]) {
                         flag = true;
                     }
                     break;
 
                 case 3:
-                    if (externalButons[7]) {
+                    if (externalButons[7] || internalButons[2]) {
                         flag = true;
                     }
                     break;
                 case 4:
-                    if (externalButons[5]) {
+                    if (externalButons[5] || internalButons[3]) {
                         flag = true;
                     }
                     break;
 
                 case 5:
-                    if (externalButons[3]) {
+                    if (externalButons[3] || internalButons[4]) {
                         flag = true;
                     }
                     break;
 
                 case 6:
-                    if (externalButons[1]) {
+                    if (externalButons[1] || internalButons[5]) {
                         flag = true;
                     }
                     break;
@@ -216,36 +229,30 @@ function App() {
         } else {
             switch (currentFloor) {
                 case 2:
-                    if (externalButons[10]) {
+                    if (externalButons[10] || internalButons[1]) {
                         flag = true;
                     }
                     break;
 
                 case 3:
-                    if (externalButons[8]) {
+                    if (externalButons[8] || internalButons[2]) {
                         flag = true;
                     }
                     break;
 
                 case 4:
-                    if (externalButons[6]) {
+                    if (externalButons[6] || internalButons[3]) {
                         flag = true;
                     }
                     break;
                 case 5:
-                    if (externalButons[4]) {
+                    if (externalButons[4] || internalButons[4]) {
                         flag = true;
                     }
                     break;
 
                 case 6:
-                    if (externalButons[2]) {
-                        flag = true;
-                    }
-                    break;
-
-                case 7:
-                    if (externalButons[0]) {
+                    if (externalButons[2] || internalButons[5]) {
                         flag = true;
                     }
                     break;
@@ -296,6 +303,7 @@ function App() {
                         listButons={externalButons}></RequestTable>
                 </div>
                 <Board
+                    setButtons={setInternalButons}
                     floor={currentFloor}
                     internalButons={internalButons}></Board>
             </div>
