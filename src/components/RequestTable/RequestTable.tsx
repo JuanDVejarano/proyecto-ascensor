@@ -11,7 +11,6 @@ const RequestTable: FC<RequestTableProps> = (props: any) => {
     let changeButton = (index: number) => {
         let listaTemporal = props.listButons;
         listaTemporal[index] = true;
-        props.onClickButon();
         props.setlistButons([...listaTemporal]);
     };
     return (

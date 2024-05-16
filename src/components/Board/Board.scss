@@ -1,0 +1,48 @@
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #a0a3a8;
+    margin-left: 100px;
+    height: fit-content;
+    max-width: 150px;
+
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
+
+        &__button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #171f1b;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            color: #171f1b;
+
+            &--on {
+                @extend .list__button;
+            }
+        }
+    }
+
+    .floor {
+        display: flex;
+        justify-content: center;
+        border: 5px solid #484b4e;
+        padding: 10px;
+        background-color: #2f2f2f;
+
+        &__p {
+            text-align: center;
+            color: #02fc00;
+            font-size: 20px;
+        }
+    }
+}
