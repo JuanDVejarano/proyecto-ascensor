@@ -1,9 +1,6 @@
-import React, { FC } from "react";
 import "./Tower.scss";
 
-interface TowerProps {}
-
-const Tower: FC<TowerProps> = () => (
+const Tower = () => (
     <ul className="tower">
         <li className="floor">
             <div className="floor__view"></div>

@@ -151,27 +151,27 @@ function App() {
                 case 3:
                     if (externalButons[8] || internalButons[2]) {
                         botonesExternosAux[8] = false;
-                        botonesInternosAux[7] = false;
+                        botonesInternosAux[2] = false;
                     }
                     break;
                 case 4:
                     if (externalButons[6] || internalButons[3]) {
                         botonesExternosAux[6] = false;
-                        botonesInternosAux[5] = false;
+                        botonesInternosAux[3] = false;
                     }
                     break;
 
                 case 5:
                     if (externalButons[4] || internalButons[4]) {
                         botonesExternosAux[4] = false;
-                        botonesInternosAux[3] = false;
+                        botonesInternosAux[4] = false;
                     }
                     break;
 
                 case 6:
                     if (externalButons[2] || internalButons[5]) {
                         botonesExternosAux[2] = false;
-                        botonesInternosAux[1] = false;
+                        botonesInternosAux[5] = false;
                     }
                     break;
                 default:

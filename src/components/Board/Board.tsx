@@ -1,6 +1,6 @@
 import "./Board.scss";
 
-const Board = (props) => {
+const Board = (props: any) => {
     let changeButton = (index: number) => {
         let listaTemporal = props.internalButons;
         listaTemporal[index] = true;

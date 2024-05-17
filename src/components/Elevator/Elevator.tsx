@@ -1,9 +1,6 @@
-import React, { FC } from "react";
 import "./Elevator.scss";
 
-interface ElevatorProps {}
-
-const Elevator: FC<ElevatorProps> = (props) => {
+const Elevator = (props: any) => {
     const { floor } = props;
 
     let elevatorClass = "elevator";
