@@ -1,17 +1,13 @@
-import React, { FC } from "react";
 import btnArribaApagado from "../../assets/externalButons/boton-arriba-apagado.png";
 import btnArribaEncendido from "../../assets/externalButons/boton-arriba-encendido.png";
 import btnAbajoApagado from "../../assets/externalButons/boton-abajo-apagado.png";
 import btnAbajoEncendido from "../../assets/externalButons/boton-abajo-encendido.png";
 import "./RequestTable.scss";
 
-interface RequestTableProps {}
-
-const RequestTable: FC<RequestTableProps> = (props: any) => {
+const RequestTable = (props: any) => {
     let changeButton = (index: number) => {
         let listaTemporal = props.listButons;
         listaTemporal[index] = true;
-        props.onClickButon();
         props.setlistButons([...listaTemporal]);
     };
     return (
